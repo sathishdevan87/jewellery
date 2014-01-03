@@ -1,0 +1,35 @@
+<div class="page-title">
+  <h1><?php echo $this->__('Feedback') ?></h1>
+</div>
+<form id="feedback_form" name="feedbackform" action="<?php echo $this->getUrl('feedback/index/save') ?>" method="post">
+  <div class="fieldset">
+    <h2 class="legend"><?php echo $this->__('Feedback') ?></h2>
+    <ul class="form-list">
+      <li>
+        <label for="customer_name" class="required"><em>*</em><?php echo $this->__('Name') ?></label>
+        <div class="input-box">
+          <input name="customer_name" id="feedback_name" title="Name" value="" class="required-entry input-text" type="text" />
+        </div>
+      </li>
+      <li>
+        <label for="email" class="required"><em>*</em><?php echo $this->__('E-Mail') ?></label>
+        <div class="input-box">
+          <input name="email" id="feedback_email" title="Email" value="" class="required-entry input-text validate-email" type="text" />
+        </div>
+      </li>
+      <li>
+        <label for="feedback" class="required"><em>*</em><?php echo $this->__('Feedback') ?></label>
+        <div class="input-box">
+          <textarea name="feedback" id="feedback_comment" title="Feedback" class="required-entry input-text" style="height:100px;" cols="50" rows="3"></textarea>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="buttons-set">
+    <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+    <button type="submit" title="<?php echo $this->__('Submit') ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+  </div>
+</form>
+<script type="text/javascript">
+    var dataForm = new VarienForm('feedback_form', true);
+</script>
