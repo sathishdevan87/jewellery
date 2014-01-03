@@ -1,0 +1,22 @@
+<layout version="0.1.0">
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="news" >
+                <label>News</label>
+                <url>news/index</url>
+                <title>News</title>
+                <prepare>true</prepare>
+            </action>
+        </reference> 
+    </default>
+    <news_index_index>
+        <reference name="content">
+            <block type="news/news" name="all_news_block" template="news/news_links.phtml" />
+        </reference>
+    </news_index_index>
+    <news_index_view>
+        <reference name="content">
+            <block type="news/news" name="news_block" template="news/view_news.phtml" />
+        </reference>
+    </news_index_view>
+</layout>
