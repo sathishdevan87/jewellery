@@ -1,0 +1,11 @@
+
+<h3>News</h3>
+<br>
+<br>
+<?php
+  $news = Mage::getModel('news/news')->getAllNews();
+  foreach ($news as $news_item) {
+    echo "<h4><a href='".$this->getUrl('news/index/view/news_id/'.$news_item->getNewsId())."'>".$news_item->getTitle()."</a></h4><br>";
+  }
+
+?>

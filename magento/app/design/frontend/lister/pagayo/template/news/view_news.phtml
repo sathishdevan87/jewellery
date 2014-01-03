@@ -1,0 +1,14 @@
+<?php
+$news_id = Mage::registry('news_id');
+$details = Mage::getModel('news/news')->getNews($news_id);
+?>
+<h3>News Item</h3>
+<div width="50">
+  <h2><?php echo $details->getTitle(); ?></h2>
+  <h6><?php echo $details->getCategory(); ?></h6>
+  <p><?php echo $details->getContent(); ?></p>
+</div>
+
+<div>
+  <a href="<?php echo $this->getUrl('news/index'); ?>">Back</a>
+</div>
