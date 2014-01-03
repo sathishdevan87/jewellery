@@ -1,0 +1,29 @@
+<config>
+    <menu>
+         <customer>
+            <children>
+                <feedback translate="title" module="feedback">
+                    <title>Feedbacks</title>
+                    <action>adminhtml/feedback</action>
+                    <sort_order>20</sort_order>
+                </feedback>
+            </children>
+         </customer>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <customer>
+                        <children>
+                            <feedback translate="title" module="feedback">
+                                <title>Feedbacks</title>
+                                <sort_order>20</sort_order>
+                            </feedback>
+                        </children>
+                    </customer>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>
