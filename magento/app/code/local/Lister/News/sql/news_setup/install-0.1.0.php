@@ -26,7 +26,7 @@ $table = $installer->getConnection()
         'nullable'  => false,
         'primary'   => false,
         ), 'Content')
-    ->addColumn('status', Varien_Db_Ddl_Table::SMALLINT, null, array(
+    ->addColumn('status', Varien_Db_Ddl_Table::TYPE_SMALLINT, null, array(
         'unsigned'  => true,
         'nullable'  => false,
         'primary'   => false,

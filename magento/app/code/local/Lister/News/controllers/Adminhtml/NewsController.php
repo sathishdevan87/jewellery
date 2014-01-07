@@ -47,6 +47,7 @@ class Lister_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Act
    }
    public function saveAction()
    {
+     echo "<pre>"; print_r($this->getRequest()->getParams());
        $id = $this->getRequest()->getParam('news_id');
        $data = Mage::getModel('news/news')->load($id);
        $data->setTitle($this->getRequest()->getParam('title'));
@@ -73,4 +74,16 @@ class Lister_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Act
      $this->_redirect("*/*/index");
      return;
    }
+   
+    public function exportCsvAction() {
+    $fileName = 'news.csv';
+    $grid = $this->getLayout()->createBlock('news/adminhtml_news_grid');
+    $this->_prepareDownloadResponse($fileName, $grid->getCsvFile());
+  }
+
+  public function exportExcelAction() {
+    $fileName = 'news.xml';
+    $grid = $this->getLayout()->createBlock('news/adminhtml_news_grid');
+    $this->_prepareDownloadResponse($fileName, $grid->getExcelFile($fileName));
+  }
 }

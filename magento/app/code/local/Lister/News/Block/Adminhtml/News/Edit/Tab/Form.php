@@ -33,6 +33,13 @@ class Lister_News_Block_Adminhtml_News_Edit_Tab_Form extends Mage_Adminhtml_Bloc
           'name'      => 'content',
           ));      
 	 
+    $fieldset->addField('status', 'select', array(
+          'label'     => Mage::helper('news')->__('Status'),
+          'class'     => 'required-entry',
+          'required'  => true,
+          'name'      => 'status',
+          'values' => array('1' => 'Yes','0' => 'No', ),
+          ));
       if (Mage::getSingleton('adminhtml/session')->getEmarketingData()) {
          $form->setValues(Mage::getSingleton('adminhtml/session')->getEmarketingData());
          Mage::getSingleton('adminhtml/session')->setEmarketingData(null);
