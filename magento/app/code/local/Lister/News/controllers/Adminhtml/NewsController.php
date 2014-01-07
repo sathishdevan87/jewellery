@@ -28,7 +28,6 @@ class Lister_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Act
          if (!empty($data)) {
             $model->setData($data);
          }
-       //  Mage::helper('staticblock/data')->showme($model);
          Mage::register('news_data', $model);
 	
          $this->loadLayout();
@@ -47,12 +46,12 @@ class Lister_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Act
    }
    public function saveAction()
    {
-     echo "<pre>"; print_r($this->getRequest()->getParams());
        $id = $this->getRequest()->getParam('news_id');
        $data = Mage::getModel('news/news')->load($id);
        $data->setTitle($this->getRequest()->getParam('title'));
        $data->setCategory($this->getRequest()->getParam('category'));
        $data->setContent($this->getRequest()->getParam('content'));
+       $data->setStatus($this->getRequest()->getParam('status'));
        $data->save();
        
        if(is_numeric($id))
@@ -75,6 +74,10 @@ class Lister_News_Adminhtml_NewsController extends Mage_Adminhtml_Controller_Act
      return;
    }
    
+   public function changeStatus()
+   {
+     echo "<pre>"; print_r($this->getRequest()->getParams()); exit;
+   }
     public function exportCsvAction() {
     $fileName = 'news.csv';
     $grid = $this->getLayout()->createBlock('news/adminhtml_news_grid');

@@ -50,11 +50,11 @@ class Lister_News_Block_Adminhtml_News_Grid extends Mage_Adminhtml_Block_Widget_
             'header' => Mage::helper('news')->__('Enable/Disable'),
             'width' => '100',
             'type' => 'action',
-            'getter' => 'getStatus',
+            'getter' => 'getId',
             'actions' => array(
                
                 array(
-           //             'caption' => Mage::helper('news')->__('Enable/Disable'),
+                        'caption' => Mage::helper('news')->getStatus(),
                         'url'     => $this->getUrl("*/*/changeStatus"),
                         'field'   => 'news_id'
                         )
