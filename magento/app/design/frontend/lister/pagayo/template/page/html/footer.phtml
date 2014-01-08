@@ -65,6 +65,7 @@
         		<div class="box3">
         			<div class="headline"><?php echo $footerbox3->getTitle(); ?></div>
         			<?php echo $this->getLayout()->createBlock('cms/block')->setBlockId('pt003-footer-box3')->toHtml() ?>
+                                <?php echo $this->getChildHtml('footermy') ?>
         		</div>
         		<div class="box4">
         			<div class="headline"><?php echo $footerbox4->getTitle(); ?></div>
