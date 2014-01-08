@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Lister_Ebs>
+            <version>0.1.0</version>
+        </Lister_Ebs>
+    </modules>
+    <global>
+        <models>
+            <ebs>
+                <class>Lister_Ebs_Model</class>
+            </ebs>
+        </models>
+         <blocks>
+            <ebs>
+                <class>Lister_Ebs_Block</class>
+            </ebs>
+        </blocks>
+    </global>
+    <default>
+<!--        <payment>
+            <mycheckout>
+                <model>ebs/paymentmethod</model>
+                <active>1</active>
+                <order_status>pending</order_status>
+                <title>CUSTOM CARD</title>
+                <payment_action>sale</payment_action>
+                <submit_url>https://someurl.com</submit_url>
+                <merchant_id>Insert merchant id</merchant_id>
+                <allowspecific>0</allowspecific>
+                <sort_order>1</sort_order>
+            </mycheckout>
+        </payment>-->
+    </default>
+</config>
