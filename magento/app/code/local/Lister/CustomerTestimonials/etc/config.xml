@@ -37,7 +37,7 @@
                 <use>standard</use>
                 <args>
                     <module>Lister_CustomerTestimonials</module>
-                    <frontName>customer</frontName>
+                    <frontName>testimonials</frontName>
                 </args>
             </customertestimonials>
         </routers>
