@@ -1,9 +1,0 @@
-<?xml version="1.0"?>
-<config>
-  <modules>
-    <Lister_CustomerTestimonials>
-      <active>true</active>
-      <codePool>local</codePool>
-    </Lister_CustomerTestimonials>
-  </modules>
-</config>
