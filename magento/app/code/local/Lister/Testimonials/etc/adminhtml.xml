@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+    <menu>
+        <testimonials translate="title" module="testimonials">
+            <title>Testimonials</title>
+            <sort_order>50</sort_order>
+            <children>
+                <item translate="title" module="testimonials">
+                    <title>View Testimonials</title>
+                    <action>testimonials/adminhtml_testimonials/</action>
+                    <sort_order>0</sort_order>
+                </item>           
+            </children>
+        </testimonials>
+    </menu>
+    <acl>
+        <resources>
+            <admin>
+                <children>               
+                    <testimonials translate="title" module="testimonials">
+                        <title>Testimonials</title>
+                        <sort_order>1</sort_order>
+                    </testimonials>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

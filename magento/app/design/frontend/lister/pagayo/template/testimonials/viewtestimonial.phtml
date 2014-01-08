@@ -1,0 +1,9 @@
+<?php
+$data = Mage::getModel('testimonials/testimonials')->getAllTestimonials();
+foreach ($data as $item)
+{
+    echo "Name :".$item->getCustomerName();
+    echo "<br>Comment :".$item->getRemarks();
+    echo "<br><br>";
+}
+?>
