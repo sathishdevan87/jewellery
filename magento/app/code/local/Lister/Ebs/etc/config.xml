@@ -1,4 +1,24 @@
 <?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Mage
+ * @package    Lister_Ebs
+ * @copyright  Copyright (c) 2008 Irubin Consulting Inc. DBA Varien (http://www.varien.com)
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
 <config>
     <modules>
         <Lister_Ebs>
@@ -9,27 +29,65 @@
         <models>
             <ebs>
                 <class>Lister_Ebs_Model</class>
+                <resourceModel>ebs_mysql4</resourceModel>
             </ebs>
+            <ebs_mysql4>
+                <class>Lister_Ebs_Model_Mysql4</class>
+                <entities>
+                    <api_debug><table>ebs_api_debug</table></api_debug>
+                </entities>
+            </ebs_mysql4>
         </models>
-         <blocks>
-            <ebs>
-                <class>Lister_Ebs_Block</class>
-            </ebs>
+        <blocks>
+            <ebs><class>Lister_Ebs_Block</class></ebs>
         </blocks>
     </global>
+    <frontend>
+        <routers>
+            <ebs>
+                <use>standard</use>
+                <args>
+                    <module>Lister_Ebs</module>
+                    <frontName>ebs</frontName>
+                </args>
+            </ebs>
+        </routers>
+        <translate>
+            <modules>
+                <Lister_Ebs>
+                    <files>
+                        <default>Lister_Ebs.csv</default>
+                    </files>
+                </Lister_Ebs>
+            </modules>
+        </translate>
+        <layout>
+            <updates>
+                <ebs>
+                    <file>ebs.xml</file>
+                </ebs>
+            </updates>
+        </layout>
+    </frontend>
+    <adminhtml>
+        <translate>
+            <modules>
+                <Lister_Ebs>
+                    <files>
+                        <default>Lister_Ebs.csv</default>
+                    </files>
+                </Lister_Ebs>
+            </modules>
+        </translate>
+    </adminhtml>
     <default>
-<!--        <payment>
-            <mycheckout>
-                <model>ebs/paymentmethod</model>
-                <active>1</active>
-                <order_status>pending</order_status>
-                <title>CUSTOM CARD</title>
-                <payment_action>sale</payment_action>
-                <submit_url>https://someurl.com</submit_url>
-                <merchant_id>Insert merchant id</merchant_id>
-                <allowspecific>0</allowspecific>
-                <sort_order>1</sort_order>
-            </mycheckout>
-        </payment>-->
+        <payment>
+            <ebs_standard>
+                  <active>1</active>
+                  <model>ebs/standard</model>
+                  <order_status>processing</order_status>
+                  <title>Ebs Standard</title>
+            </ebs_standard>
+        </payment>
     </default>
 </config>
