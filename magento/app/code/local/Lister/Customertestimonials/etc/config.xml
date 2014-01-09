@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+     
+    <modules>
+        <Lister_CustomerTestimonials>
+            <version>0.1.3</version>
+        </Lister_CustomerTestimonials>
+    </modules>
+    
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <customertestimonials>Lister_CustomerTestimonials_Adminhtml</customertestimonials>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+    
+<!--    <adminhtml>
+        <layout>
+            <updates>
+                    <customertestimonials module="customertestimonials">
+                        <file>customertestimonials/customertestimonials.xml</file>
+                    </customertestimonials>
+            </updates>
+        </layout>
+    </adminhtml>-->
+       
+    
+    <frontend>
+        
+        <routers>
+            <customertestimonials>
+                <use>standard</use>
+                <args>
+                    <module>Lister_CustomerTestimonials</module>
+                    <frontName>testimonials</frontName>
+                </args>
+            </customertestimonials>
+        </routers>
+        
+        <layout>
+            <updates>
+                <customertestimonials>
+                    <file>lister_customertestimonials.xml</file>
+                </customertestimonials>
+            </updates>
+        </layout>
+        
+    </frontend>
+    
+    <global>
+        
+        <blocks>
+            <customertestimonials>
+                <class>Lister_CustomerTestimonials_Block</class>
+            </customertestimonials>
+        </blocks>
+        
+        <helpers>
+            <customertestimonials>
+                <class>Lister_CustomerTestimonials_Helper</class>
+            </customertestimonials>
+        </helpers>
+        
+        <models>
+            
+            <customertestimonials>
+                <class>Lister_CustomerTestimonials_Model</class>
+                <resourceModel>customertestimonials_resource</resourceModel>
+            </customertestimonials>
+            
+            <customertestimonials_resource>
+                <class>Lister_CustomerTestimonials_Model_Resource</class>
+                <entities>
+                    <remarks>
+                        <table>customer_testimonials</table>
+                    </remarks>
+                </entities>
+            </customertestimonials_resource>
+            
+        </models>
+        
+        <resources>
+            <customertestimonials_setup>
+                <setup>
+                    <module>Lister_CustomerTestimonials</module>
+                    <class>Lister_CustomerTestimonials_Model_Resource_Setup</class>
+                </setup>
+            </customertestimonials_setup>
+        </resources>
+
+    </global>
+    
+
+</config>
