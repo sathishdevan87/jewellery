@@ -82,12 +82,12 @@
     </adminhtml>
     <default>
         <payment>
-            <ebs_standard>
+            <ebs>
                   <active>1</active>
                   <model>ebs/standard</model>
                   <order_status>processing</order_status>
                   <title>Ebs Standard</title>
-            </ebs_standard>
+            </ebs>
         </payment>
     </default>
 </config>

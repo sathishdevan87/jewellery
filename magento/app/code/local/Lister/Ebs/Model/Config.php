@@ -38,7 +38,7 @@ class Lister_Ebs_Model_Config extends Varien_Object
     public function getConfigData($key, $default=false)
     {
         if (!$this->hasData($key)) {
-            $value = Mage::getStoreConfig('payment/ebs_standard/'.$key);
+            $value = Mage::getStoreConfig('payment/ebs/'.$key);
             if (is_null($value) || false===$value) {
                 $value = $default;
             }

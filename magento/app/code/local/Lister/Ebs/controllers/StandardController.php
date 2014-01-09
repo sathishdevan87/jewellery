@@ -71,21 +71,18 @@ class Lister_Ebs_StandardController extends Mage_Core_Controller_Front_Action
         $session = Mage::getSingleton('checkout/session');
         $session->setEbsStandardQuoteId($session->getQuoteId());
         $order = $this->getOrder();
-        
         if (!$order->getId()) {
             $this->norouteAction();
             return;
         }
 
-        /*$order->addStatusToHistory(
+       /* $order->addStatusToHistory(
             $order->getStatus(),
             Mage::helper('ebs')->__('Customer was redirected to Ebs')
-        );*/
-        //$order->save();
-        $this->getResponse()->setBody($this->getLayout()
-                ->createBlock('ebs/standard_redirect')
-                ->setOrder($order)
-                ->toHtml());
+        );
+        $order->save();*/
+$this->getResponse()->setBody($this->getLayout()->createBlock('ebs/standard_redirect')->toHtml());
+       
         $session->unsQuoteId();
     }
 

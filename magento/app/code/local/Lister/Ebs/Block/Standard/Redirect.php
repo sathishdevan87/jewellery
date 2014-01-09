@@ -32,6 +32,7 @@ class Lister_Ebs_Block_Standard_Redirect extends Mage_Core_Block_Abstract
 
     protected function _toHtml()
     {
+  
         $standard = Mage::getModel('ebs/standard');
         $form = new Varien_Data_Form();
         $form->setAction($standard->getEbsUrl())
@@ -39,9 +40,8 @@ class Lister_Ebs_Block_Standard_Redirect extends Mage_Core_Block_Abstract
             ->setName('ebs_standard_checkout')
             ->setMethod('POST')
             ->setUseContainer(true);
+        foreach ($standard->getStandardCheckoutFormFields() as $field => $value) {
 
-        foreach ($standard->setOrder($this->getOrder())->getStandardCheckoutFormFields() as $field => $value) {
-		
 		if($field == 'return')
         	{
         		$returnurl=$value."?DR={DR}";
@@ -94,15 +94,7 @@ class Lister_Ebs_Block_Standard_Redirect extends Mage_Core_Block_Abstract
 		$name=$fname." ".$lname;
 		$address=$street.",".$city.",".$state;		
 		$mode=Mage::getSingleton('ebs/config')->getTransactionMode();
-		if($mode == '1')
-		{
-		$mode="TEST";
-		}
-		else
-		{
-		$mode="LIVE";
-	    }
-
+		
 		$hash = Mage::getSingleton('ebs/config')->getSecretKey()."|".Mage::getSingleton('ebs/config')->getAccountId()."|".$amount."|".$referenceno."|".$returnurl."|".$mode;
 
 		$secure_hash = md5($hash);	
@@ -120,7 +112,7 @@ class Lister_Ebs_Block_Standard_Redirect extends Mage_Core_Block_Abstract
         $html = '<html><body>';
         $html.= $this->__('You will be redirected to E-Billing Solutions in a few seconds.');
         $html.= $form->toHtml();
-        $html.= '<script type="text/javascript">document.getElementById("ebs_standard_checkout").submit();</script>';
+       // $html.= '<script type="text/javascript">document.getElementById("ebs_standard_checkout").submit();</script>';
         $html.= '</body></html>';
 
         return $html;

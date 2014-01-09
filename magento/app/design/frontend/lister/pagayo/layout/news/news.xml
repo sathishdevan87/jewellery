@@ -11,16 +11,16 @@
         <reference name="head">
         <action method="addItem">
                 <type>skin_js</type>
-                <name>js/slider/carousel.js</name>
+                <name>js/carousel.js</name>
         </action>
        <action method="addItem">
                 <type>skin_css</type>
-                <name>css/slider/carousel.css</name>
+                <name>css/carousel.css</name>
         </action>
         </reference>
        </default>
        <cms_index_index>
-           <reference name="content">
+        <reference name="content">
             <block type="news/news" name="slider_block" template="news/my_slider.phtml" />
         </reference>  
        </cms_index_index>

@@ -28,7 +28,7 @@
  */
 class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
 {
-    protected $_code  = 'ebs_standard';
+    protected $_code  = 'ebs';
     protected $_formBlockType = 'ebs/standard_form';
 
     protected $_isGateway               = false;
@@ -142,11 +142,11 @@ class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
         return $block;
     }
     
-    public function getCheckoutRedirectUrl()
+    /*public function getCheckoutRedirectUrl()
     {
 
         return Mage::getUrl('ebs/standard/redirect');
-    }
+    }*/
 
     /**
      *  Return Order Place Redirect URL
@@ -165,7 +165,12 @@ class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
      */
     public function getStandardCheckoutFormFields ()
     {
-        $order = $this->getOrder();
+        echo "sdfsdf";
+        $paymentInfo = $this->getInfoInstance();
+        print_r($paymentInfo);
+        exit;
+        $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
+        $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
         if (!($order instanceof Mage_Sales_Model_Order)) {
             Mage::throwException($this->_getHelper()->__('Cannot retrieve order object'));
         }
@@ -177,8 +182,6 @@ class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
         $street = isset($streets[0]) && $streets[0] != ''
                   ? $streets[0]
                   : (isset($streets[1]) && $streets[1] != '' ? $streets[1] : '');
-
-
 	
 
         if ($this->getConfig()->getDescription()) {
@@ -214,7 +217,7 @@ class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
                         'cb_type'          => 'P', // POST method used (G - GET method)
                         'decline_url'      => $this->getFailureURL(),
                       	'cs1'              => $order->getRealOrderId(),   
-		'ship_name'	=> $shippingAddress->getFirstname().$shippingAddress->getLastname(),
+                        'ship_name'	=> $shippingAddress->getFirstname().$shippingAddress->getLastname(),
 			
 			'ship_address'	=> $shippingAddress->getStreet(1),
 			'ship_city'	=> $shippingAddress->getCity(),
@@ -222,11 +225,6 @@ class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
 			'ship_postal_code'=> $shippingAddress->getPostcode(),
 			'ship_country'     => $shippingAddress->getCountryModel()->getIso3Code(),
                         'ship_phone'           => $shippingAddress->getTelephone(),
-			
-
-			
-
-
             );
 
         if ($this->getConfig()->getDebug()) {
