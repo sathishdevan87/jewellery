@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+        <reference name="footer_links">
+            <action method="addLink" translate="label title" module="testimonials" ><label>Customer Testimonials</label><url>testimonials/index/view</url><title>Customer Testimonials</title><prepare>true</prepare></action>
+        </reference>
+</default>
+    <testimonials_index_index>
+        <reference name="content">
+            <block type="testimonials/testimonials" name="contactForm" template="testimonials/form.phtml" />
+        </reference>
+    </testimonials_index_index>
+    <testimonials_index_view>
+        <reference name="content">
+            <block type="testimonials/testimonials" name="viewtestimonials" template="testimonials/viewtestimonial.phtml" />
+        </reference>
+    </testimonials_index_view>
+</layout>

@@ -1,0 +1,21 @@
+<?php
+$news = Mage::getModel('news/news')->getAllNews();
+
+//$this->getSkinUrl();
+?>
+
+<a href="javascript:" class="carousel-jumper" rel="slide-1">Jump to slide 1</a>
+<a href="javascript:" class="carousel-control" rel="prev">Previous slide</a>
+<div id="carousel-wrapper">
+  <div id="carousel-content">
+    <?php foreach ($news as $news_item) : ?>
+      <div class="slide">
+        <h4><a href="<?php echo $this->getUrl('news/index/view/news_id/' . $news_item->getNewsId()); ?>"><?php echo $news_item->getTitle(); ?></a></h4>
+      </div>
+    <?php endforeach; ?>       
+  </div>
+</div>
+
+<script>
+  new Carousel('carousel-wrapper', $$('#carousel-content .slide'), $$('a.carousel-control', 'a.carousel-jumper'), {auto: true, frequency: 2, circular: true});
+</script>
