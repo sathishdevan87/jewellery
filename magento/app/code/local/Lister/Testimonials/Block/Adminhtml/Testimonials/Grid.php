@@ -72,5 +72,13 @@ class Lister_Testimonials_Block_Adminhtml_Testimonials_Grid extends Mage_Adminht
 	  
       return parent::_prepareColumns();
    }
+     public function getGridUrl()
+    {
+        return $this->getUrl('*/*/grid', array('_current'=>true));
+    }
+    public function getRowUrl($row)
+    {
+        return $this->getUrl('*/*/edit', array('id' => $row->getId()));
+    }
    
   }
