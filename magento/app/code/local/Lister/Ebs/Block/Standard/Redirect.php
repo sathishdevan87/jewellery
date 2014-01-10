@@ -40,7 +40,7 @@ class Lister_Ebs_Block_Standard_Redirect extends Mage_Core_Block_Abstract
             ->setName('ebs_standard_checkout')
             ->setMethod('POST')
             ->setUseContainer(true);
-        foreach ($standard->getStandardCheckoutFormFields() as $field => $value) {
+        /*foreach ($standard->getStandardCheckoutFormFields() as $field => $value) {
 
 		if($field == 'return')
         	{
@@ -89,30 +89,30 @@ class Lister_Ebs_Block_Standard_Redirect extends Mage_Core_Block_Abstract
 			$state=$value;
 			}	
 		   $form->addField($field, 'hidden', array('name' => $field, 'value' => $value));
-        }
+        }*/
 
 		$name=$fname." ".$lname;
 		$address=$street.",".$city.",".$state;		
 		$mode=Mage::getSingleton('ebs/config')->getTransactionMode();
 		
-		$hash = Mage::getSingleton('ebs/config')->getSecretKey()."|".Mage::getSingleton('ebs/config')->getAccountId()."|".$amount."|".$referenceno."|".$returnurl."|".$mode;
+		$hash = Mage::getSingleton('ebs/config')->getSecretKey()."|".Mage::getSingleton('ebs/config')->getAccountId()."|" . 122 ."|". 122 ."|".'ebs/standard/success'."|".$mode;
 
 		$secure_hash = md5($hash);	
 		
-        $form->addField('reference_no', 'hidden', array('name'=>'reference_no', 'value'=>$referenceno));
-        $form->addField('amount', 'hidden', array('name'=>'amount', 'value'=>$amount));
+        $form->addField('reference_no', 'hidden', array('name'=>'reference_no', 'value'=>122));
+        $form->addField('amount', 'hidden', array('name'=>'amount', 'value'=>122));
         $form->addField('mode', 'hidden', array('name'=>'mode', 'value'=>$mode));
-        $form->addField('return_url', 'hidden', array('name'=>'return_url', 'value'=>$returnurl));
-        $form->addField('name', 'hidden', array('name'=>'name', 'value'=>$name));
-        $form->addField('description', 'hidden', array('name'=>'description', 'value'=>$desc));
-        $form->addField('address', 'hidden', array('name'=>'address', 'value'=>$address));
-        $form->addField('postal_code', 'hidden', array('name'=>'postal_code', 'value'=>$postalcode));
+        $form->addField('return_url', 'hidden', array('name'=>'return_url', 'value'=>'ebs/standard/success'));
+        $form->addField('name', 'hidden', array('name'=>'name', 'value'=>'dasfsdf'));
+        $form->addField('description', 'hidden', array('name'=>'description', 'value'=>'sfsdf'));
+        $form->addField('address', 'hidden', array('name'=>'address', 'value'=>'dfasfsdfsa'));
+        $form->addField('postal_code', 'hidden', array('name'=>'postal_code', 'value'=>12323));
 	$form->addField('secure_hash','hidden',array('name'=>'secure_hash','value'=>$secure_hash));
        
         $html = '<html><body>';
         $html.= $this->__('You will be redirected to E-Billing Solutions in a few seconds.');
         $html.= $form->toHtml();
-       // $html.= '<script type="text/javascript">document.getElementById("ebs_standard_checkout").submit();</script>';
+        //$html.= '<script type="text/javascript">document.getElementById("ebs_standard_checkout").submit();</script>';
         $html.= '</body></html>';
 
         return $html;

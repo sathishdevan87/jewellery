@@ -165,10 +165,6 @@ class Lister_Ebs_Model_Standard extends Mage_Payment_Model_Method_Abstract
      */
     public function getStandardCheckoutFormFields ()
     {
-        echo "sdfsdf";
-        $paymentInfo = $this->getInfoInstance();
-        print_r($paymentInfo);
-        exit;
         $orderIncrementId = $this->getCheckout()->getLastRealOrderId();
         $order = Mage::getModel('sales/order')->loadByIncrementId($orderIncrementId);
         if (!($order instanceof Mage_Sales_Model_Order)) {
