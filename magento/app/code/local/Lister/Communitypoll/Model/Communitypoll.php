@@ -13,8 +13,11 @@
 class Lister_Communitypoll_Model_Communitypoll extends Mage_Core_Model_Abstract {
 
   public function productcatlist() {
-    $id = Mage::registry('current_product')->getId();
-    $category_id = Mage::registry('current_category')->getId();
+    $current_prod = Mage::registry('current_product');
+    $id = $current_prod->getId();
+    $category_ids = $current_prod->getCategoryIds();
+    $category_id = end($category_ids);
+   
     $category_coll = Mage::getModel('catalog/category');
     $category = $category_coll->load($category_id);
 

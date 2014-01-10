@@ -21,7 +21,7 @@
        </default>
        <cms_index_index>
         <reference name="content">
-            <block type="news/news" name="slider_block" template="news/my_slider.phtml" />
+            <block type="news/news" name="slider_block" template="news/my_slider.phtml" after="footer" />
         </reference>  
        </cms_index_index>
     
